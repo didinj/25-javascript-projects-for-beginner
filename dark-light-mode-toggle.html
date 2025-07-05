@@ -1,0 +1,22 @@
+<button onclick="toggleMode()">Toggle Dark Mode</button>
+
+<script>
+  function toggleMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  }
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+</script>
+
+<style>
+  body.dark {
+    background: #111;
+    color: #fff;
+  }
+</style>

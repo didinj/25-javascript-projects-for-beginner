@@ -1,0 +1,17 @@
+<input id="todo-input" placeholder="Add a task" />
+<ul id="todo-list"></ul>
+
+<script>
+  const input = document.getElementById("todo-input");
+  const list = document.getElementById("todo-list");
+
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" && input.value.trim()) {
+      const li = document.createElement("li");
+      li.textContent = input.value;
+      li.onclick = () => li.remove();
+      list.appendChild(li);
+      input.value = "";
+    }
+  });
+</script>

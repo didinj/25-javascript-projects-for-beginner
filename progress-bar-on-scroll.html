@@ -1,0 +1,21 @@
+<div
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 0;
+    background: #3498db;
+  "
+  id="bar"
+></div>
+
+<script>
+  window.onscroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    document.getElementById("bar").style.width = scrolled + "%";
+  };
+</script>

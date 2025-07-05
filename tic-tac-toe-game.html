@@ -1,0 +1,58 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 5px;
+  }
+  .cell {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid #000;
+  }
+</style>
+
+<div class="grid" id="board"></div>
+<p id="status"></p>
+
+<script>
+  const board = document.getElementById("board");
+  const status = document.getElementById("status");
+  let current = "X";
+  const cells = Array(9).fill("");
+
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.onclick = () => mark(i, cell);
+    board.appendChild(cell);
+  }
+
+  function mark(i, cell) {
+    if (cells[i]) return;
+    cells[i] = current;
+    cell.textContent = current;
+    if (checkWin()) {
+      status.textContent = `${current} wins!`;
+      board.style.pointerEvents = "none";
+    } else {
+      current = current === "X" ? "O" : "X";
+    }
+  }
+
+  function checkWin() {
+    const winPatterns = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+    return winPatterns.some((p) => p.every((i) => cells[i] === current));
+  }
+</script>

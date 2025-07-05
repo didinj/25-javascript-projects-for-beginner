@@ -1,0 +1,14 @@
+<input id="word" placeholder="Enter a word" />
+<button onclick="checkPalindrome()">Check</button>
+<p id="pal-result"></p>
+
+<script>
+  function checkPalindrome() {
+    const str = document.getElementById("word").value.toLowerCase();
+    const reversed = str.split("").reverse().join("");
+    const isPal = str === reversed;
+    document.getElementById("pal-result").textContent = isPal
+      ? "✅ It's a palindrome!"
+      : "❌ Not a palindrome.";
+  }
+</script>

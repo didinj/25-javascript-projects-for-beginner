@@ -1,0 +1,16 @@
+<div>
+  <button onclick="showTab(0)">Tab 1</button>
+  <button onclick="showTab(1)">Tab 2</button>
+</div>
+
+<div class="tab-content">This is content for Tab 1.</div>
+<div class="tab-content" style="display: none">This is content for Tab 2.</div>
+
+<script>
+  function showTab(index) {
+    const tabs = document.querySelectorAll(".tab-content");
+    tabs.forEach(
+      (tab, i) => (tab.style.display = i === index ? "block" : "none")
+    );
+  }
+</script>

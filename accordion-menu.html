@@ -1,0 +1,20 @@
+<style>
+  .content {
+    display: none;
+  }
+  .active .content {
+    display: block;
+  }
+
+  h3,
+  .content {
+    width: 300px;
+    border: solid 1px #999999;
+    padding: 5px;
+  }
+</style>
+
+<div class="accordion" onclick="this.classList.toggle('active')">
+  <h3>What is JavaScript?</h3>
+  <div class="content"><p>A programming language for the web.</p></div>
+</div>

@@ -1,0 +1,26 @@
+<p id="text">Type this sentence as fast as you can!</p>
+<input id="inputText" placeholder="Start typing..." />
+<p id="result"></p>
+
+<script>
+  const text = document.getElementById("text").textContent;
+  const input = document.getElementById("inputText");
+  let startTime;
+
+  input.addEventListener("focus", () => {
+    startTime = new Date().getTime();
+  });
+
+  input.addEventListener("input", () => {
+    if (input.value === text) {
+      const endTime = new Date().getTime();
+      const timeTaken = (endTime - startTime) / 1000;
+      const words = text.split(" ").length;
+      const wpm = Math.round((words / timeTaken) * 60);
+      document.getElementById(
+        "result"
+      ).textContent = `You typed at ${wpm} WPM!`;
+      input.disabled = true;
+    }
+  });
+</script>

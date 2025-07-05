@@ -1,0 +1,87 @@
+<input id="display" readonly />
+<div style="margin: 10px">
+  <div class="button-group">
+    <button onclick="clearDisplay()">C</button>
+    <button>&nbsp;</button>
+    <button>&nbsp;</button>
+    <button onclick="append(':')">:</button>
+  </div>
+  <div class="button-group">
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button onclick="append('X')">X</button>
+  </div>
+  <div class="button-group">
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button onclick="append('-')">-</button>
+  </div>
+  <div class="button-group">
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button onclick="append('+')">+</button>
+  </div>
+  <div class="button-group">
+    <button>&nbsp;</button>
+    <button onclick="append('0')">0</button>
+    <button>&nbsp;</button>
+    <button onclick="countValue()">=</button>
+  </div>
+</div>
+
+<style>
+  button {
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+  }
+
+  .button-group {
+    display: block;
+    padding-bottom: 5px;
+  }
+
+  input {
+    margin: 10px;
+    width: 125px;
+  }
+</style>
+
+<script>
+  const display = document.getElementById("display");
+
+  function countValue() {
+    if (display.value.includes("+")) display.value = eval(display.value);
+
+    if (display.value.includes("-")) display.value = eval(display.value);
+
+    if (display.value.includes(":"))
+      display.value = display.value.split(":")[0] / display.value.split(":")[1];
+
+    if (display.value.includes("X"))
+      display.value = display.value.split("X")[0] * display.value.split("X")[1];
+  }
+
+  function append(value) {
+    if (
+      (value.includes("+") ||
+        value.includes("-") ||
+        value.includes(":") ||
+        value.includes("X")) &&
+      (display.value.includes("+") ||
+        display.value.includes("-") ||
+        display.value.includes(":") ||
+        display.value.includes("X"))
+    ) {
+      alert("Limited to 2 values!");
+      display.value = display.value.slice(0, -1);
+    } else display.value += value;
+  }
+
+  function clearDisplay() {
+    display.value = "";
+  }
+</script>

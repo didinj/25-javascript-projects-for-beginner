@@ -1,0 +1,39 @@
+<img id="slider" width="300" />
+<br />
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+
+<style>
+  img {
+    margin: 10px 10px 5px 10px;
+  }
+
+  button {
+    margin: 5px 10px;
+  }
+</style>
+
+<script>
+  const images = [
+    "images/IMG_0924.png",
+    "images/IMG_0925.png",
+    "images/IMG_0926.png"
+  ];
+  let index = 0;
+
+  function showImage() {
+    document.getElementById("slider").src = images[index];
+  }
+
+  function next() {
+    index = (index + 1) % images.length;
+    showImage();
+  }
+
+  function prev() {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+  }
+
+  showImage();
+</script>

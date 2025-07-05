@@ -1,0 +1,15 @@
+<textarea
+  id="note"
+  rows="6"
+  cols="30"
+  placeholder="Type your note here..."
+></textarea>
+
+<script>
+  const note = document.getElementById("note");
+  note.value = localStorage.getItem("note") || "";
+
+  note.addEventListener("input", () => {
+    localStorage.setItem("note", note.value);
+  });
+</script>

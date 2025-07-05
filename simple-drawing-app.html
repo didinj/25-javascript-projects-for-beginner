@@ -1,0 +1,24 @@
+<canvas
+  id="draw"
+  width="400"
+  height="300"
+  style="border: 1px solid #000"
+></canvas>
+
+<script>
+  const canvas = document.getElementById("draw");
+  const ctx = canvas.getContext("2d");
+  let drawing = false;
+
+  canvas.addEventListener("mousedown", () => (drawing = true));
+  canvas.addEventListener("mouseup", () => (drawing = false));
+  canvas.addEventListener("mousemove", draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    ctx.fillStyle = "#000";
+    ctx.beginPath();
+    ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+</script>

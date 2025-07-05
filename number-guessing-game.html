@@ -1,0 +1,19 @@
+<input id="guess" placeholder="Enter a number (1-100)" />
+<button onclick="checkGuess()">Guess</button>
+<p id="feedback"></p>
+
+<script>
+  const secret = Math.floor(Math.random() * 100) + 1;
+
+  function checkGuess() {
+    const guess = Number(document.getElementById("guess").value);
+    const feedback = document.getElementById("feedback");
+    if (guess === secret) {
+      feedback.textContent = "🎉 Correct! You guessed it!";
+    } else if (guess < secret) {
+      feedback.textContent = "📉 Too low. Try again!";
+    } else {
+      feedback.textContent = "📈 Too high. Try again!";
+    }
+  }
+</script>

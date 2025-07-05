@@ -1,0 +1,19 @@
+<button
+  onclick="topFunction()"
+  id="topBtn"
+  style="display: none; position: fixed; bottom: 20px; right: 20px"
+>
+  ⬆️ Top
+</button>
+
+<script>
+  const topBtn = document.getElementById("topBtn");
+
+  window.onscroll = () => {
+    topBtn.style.display = window.scrollY > 100 ? "block" : "none";
+  };
+
+  function topFunction() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>

@@ -1,0 +1,43 @@
+<div class="stopwatch"><p id="display">0.00</p></div>
+<button onclick="start()">Start</button>
+<button onclick="stop()">Stop</button>
+<button onclick="reset()">Reset</button>
+
+<style>
+  p {
+    font-size: 32px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: yellow;
+  }
+  button {
+    margin-left: 10px;
+  }
+  .stopwatch {
+    margin: 10px;
+    padding: 10px;
+    background-color: black;
+    width: 150px;
+  }
+</style>
+
+<script>
+  let time = 0,
+    interval;
+  function start() {
+    if (interval) return;
+    interval = setInterval(() => {
+      time += 0.01;
+      document.getElementById("display").textContent = time.toFixed(2);
+    }, 10);
+  }
+  function stop() {
+    clearInterval(interval);
+    interval = null;
+  }
+  function reset() {
+    stop();
+    time = 0;
+    document.getElementById("display").textContent = "0.00";
+  }
+</script>

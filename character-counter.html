@@ -1,0 +1,11 @@
+<textarea id="text" maxlength="100" rows="4" cols="30"></textarea>
+<p id="count">0 / 100</p>
+
+<script>
+  const text = document.getElementById("text");
+  const count = document.getElementById("count");
+
+  text.addEventListener("input", () => {
+    count.textContent = `${text.value.length} / 100`;
+  });
+</script>

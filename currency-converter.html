@@ -1,0 +1,15 @@
+<input id="usd" placeholder="USD amount" />
+<button onclick="convert()">Convert to EUR</button>
+<p id="eur"></p>
+
+<script>
+  async function convert() {
+    const amount = document.getElementById("usd").value;
+    const res = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+    const data = await res.json();
+    const rate = data.rates.EUR;
+    document.getElementById("eur").textContent = `EUR: ${(
+      amount * rate
+    ).toFixed(2)}`;
+  }
+</script>

@@ -1,0 +1,22 @@
+<form onsubmit="return validateForm()">
+  <input id="email" placeholder="Enter your email" />
+  <span id="error" style="color: red"></span><br />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  function validateForm() {
+    const email = document.getElementById("email").value;
+    const error = document.getElementById("error");
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+      error.textContent = "Invalid email address.";
+      return false;
+    }
+
+    error.textContent = "";
+    alert("Form submitted!");
+    return true;
+  }
+</script>

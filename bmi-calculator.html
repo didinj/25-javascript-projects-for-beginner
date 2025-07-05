@@ -1,0 +1,15 @@
+<input id="height" placeholder="Height in meters" />
+<input id="weight" placeholder="Weight in kg" />
+<button onclick="calculateBMI()">Calculate BMI</button>
+<p id="bmi-result"></p>
+
+<script>
+  function calculateBMI() {
+    const h = parseFloat(document.getElementById("height").value);
+    const w = parseFloat(document.getElementById("weight").value);
+    const bmi = w / (h * h);
+    document.getElementById(
+      "bmi-result"
+    ).textContent = `Your BMI is ${bmi.toFixed(2)}`;
+  }
+</script>

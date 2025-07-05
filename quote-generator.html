@@ -1,0 +1,14 @@
+<button onclick="getQuote()">New Quote</button>
+<blockquote id="quote"></blockquote>
+
+<script>
+  async function getQuote() {
+    const res = await fetch("https://api.quotable.io/random");
+    const data = await res.json();
+    document.getElementById(
+      "quote"
+    ).textContent = `"${data.content}" — ${data.author}`;
+  }
+
+  getQuote(); // load initial quote
+</script>
